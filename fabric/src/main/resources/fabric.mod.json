@@ -1,22 +1,23 @@
 {
   "schemaVersion": 1,
-  "id": "examplemod",
+  "id": "valkyrienmissiles",
   "version": "${version}",
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Valkyrien Missiles",
+  "description": "Add missiles to Valkyrien Skies.",
   "authors": [
-    "Me!"
+    "StoneTrench",
+    "FixIsDaddy"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://github.com/StoneTrench/ValkyrienMissiles",
+    "sources": "https://github.com/StoneTrench/ValkyrienMissiles"
   },
-  "license": "Insert License Here",
+  "license": "MIT",
   "icon": "assets/valkyrienmissiles/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.examplemod.fabric.ExampleModFabric"
+      "net.valkyrienmissiles.fabric.MainFabric"
     ]
   },
   "depends": {

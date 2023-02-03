@@ -1,33 +1,33 @@
 modLoader = "javafml"
 loaderVersion = "[40,)"
 #issueTrackerURL = ""
-license = "Insert License Here"
+license = "MIT"
 
 [[mods]]
-modId = "examplemod"
+modId = "valkyrienmissiles"
 version = "${version}"
-displayName = "Example Mod"
-authors = "Me!"
+displayName = "Valkyrien Missiles"
+authors = "StoneTrench, FixIsDaddy"
 description = '''
-This is an example description! Tell everyone what your mod is about!
+Add missiles to Valkyrien Skies.
 '''
 #logoFile = ""
 
-[[dependencies.examplemod]]
+[[dependencies.valkyrienmissiles]]
 modId = "forge"
 mandatory = true
 versionRange = "[40,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.examplemod]]
+[[dependencies.valkyrienmissiles]]
 modId = "minecraft"
 mandatory = true
 versionRange = "[1.18.2,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.examplemod]]
+[[dependencies.valkyrienmissiles]]
 modId = "architectury"
 mandatory = true
 versionRange = "[4.9.83,)"

@@ -6,7 +6,7 @@ architectury {
 }
 
 loom {
-    accessWidenerPath = file("src/main/resources/examplemod.accesswidener")
+    accessWidenerPath = file("src/main/resources/valkyrienmissiles.accesswidener")
 }
 
 dependencies {
@@ -16,6 +16,9 @@ dependencies {
     // Remove the next line if you don't want to depend on the API
     modApi "dev.architectury:architectury:${rootProject.architectury_version}"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+
+    modApi("org.valkyrienskies:valkyrienskies-118-common:${rootProject.vs2_version}")
+    implementation("org.valkyrienskies.core:api:${rootProject.vs2core_version}") { transitive = false }
 }
 
 publishing {
