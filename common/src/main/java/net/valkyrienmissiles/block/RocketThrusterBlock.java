@@ -3,31 +3,22 @@ package net.valkyrienmissiles.block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
 import net.valkyrienmissiles.RocketControl;
 import net.valkyrienmissiles.ShipAssembler;
 import org.joml.Vector3d;
-import org.joml.Vector3dc;
 import org.joml.Vector3i;
 import org.valkyrienskies.core.api.ships.ServerShip;
-import org.valkyrienskies.core.impl.game.ships.PhysShipImpl;
-import org.valkyrienskies.core.impl.game.ships.serialization.shipserver.dto.ShipDataCommon;
 import org.valkyrienskies.mod.common.VSGameUtilsKt;
-import org.valkyrienskies.mod.common.assembly.ShipAssemblyKt;
 
 public class RocketThrusterBlock extends RocketBlock {
     public static final BooleanProperty POWERED;
-    public static final Vector3d FORCE = new Vector3d(0, 8, 0);
+    public static final Vector3d FORCE = new Vector3d(0, 2, 0);
 
     public RocketThrusterBlock(Properties properties) {
         super(properties);
@@ -43,10 +34,10 @@ public class RocketThrusterBlock extends RocketBlock {
         ServerShip serverShip = VSGameUtilsKt.getShipManagingPos(serverLevel, blockPos);
         if (serverShip == null) return;
 
-
+        System.out.println("Control_p");
 
         RocketControl rocketControl = RocketControl.getOrCreate(serverShip);
-        rocketControl.addThruster(new Vector3i(blockPos.getX(), blockPos.getY(), blockPos.getZ()), FORCE);
+        rocketControl.addThruster(new Vector3d(blockPos.getX(), blockPos.getY(), blockPos.getZ()), FORCE);
     }
 
     @Override
@@ -59,8 +50,21 @@ public class RocketThrusterBlock extends RocketBlock {
         ServerShip serverShip = VSGameUtilsKt.getShipManagingPos(serverLevel, blockPos);
         if (serverShip == null) return;
 
+        System.out.println("Control_r");
+
         RocketControl rocketControl = RocketControl.getOrCreate(serverShip);
-        rocketControl.removeThruster(new Vector3i(blockPos.getX(), blockPos.getY(), blockPos.getZ()), FORCE);
+        rocketControl.removeThruster(new Vector3d(blockPos.getX(), blockPos.getY(), blockPos.getZ()), FORCE);
+    }
+
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext blockPlaceContext) {
+        return this.defaultBlockState().setValue(FACING, blockPlaceContext.getNearestLookingDirection().getOpposite()).setValue(POWERED, false);
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        super.createBlockStateDefinition(builder);
+        builder.add(POWERED);
     }
 
     static {

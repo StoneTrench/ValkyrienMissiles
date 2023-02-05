@@ -2,7 +2,7 @@
   "variants": {
     "facing=down,powered=false": {
       "model": "valkyrienmissiles:block/rocket_body_thruster",
-      "x": 270
+      "x": 90
     },
     "facing=east,powered=false": {
       "model": "valkyrienmissiles:block/rocket_body_thruster",
@@ -17,7 +17,7 @@
     },
     "facing=up,powered=false": {
       "model": "valkyrienmissiles:block/rocket_body_thruster",
-      "x": 90
+      "x": 270
     },
     "facing=west,powered=false": {
       "model": "valkyrienmissiles:block/rocket_body_thruster",
@@ -25,7 +25,7 @@
     },
     "facing=down,powered=true": {
       "model": "valkyrienmissiles:block/rocket_body_thruster_on",
-      "x": 270
+      "x": 90
     },
     "facing=east,powered=true": {
       "model": "valkyrienmissiles:block/rocket_body_thruster_on",
@@ -40,7 +40,7 @@
     },
     "facing=up,powered=true": {
       "model": "valkyrienmissiles:block/rocket_body_thruster_on",
-      "x": 90
+      "x": 270
     },
     "facing=west,powered=true": {
       "model": "valkyrienmissiles:block/rocket_body_thruster_on",
