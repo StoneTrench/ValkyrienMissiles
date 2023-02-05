@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "valkyrienmissiles:block/rocket_body",
+      "x": 270
+    },
+    "facing=east": {
+      "model": "valkyrienmissiles:block/rocket_body",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "valkyrienmissiles:block/rocket_body"
+    },
+    "facing=south": {
+      "model": "valkyrienmissiles:block/rocket_body",
+      "y": 180
+    },
+    "facing=up": {
+      "model": "valkyrienmissiles:block/rocket_body",
+      "x": 90
+    },
+    "facing=west": {
+      "model": "valkyrienmissiles:block/rocket_body",
+      "y": 270
+    }
+}
+}

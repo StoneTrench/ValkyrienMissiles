@@ -1,3 +1,8 @@
 {
-  "item.examplemod.example_item": "Example Item"
+  "itemGroup.valkyrienmissiles.item_group": "Valkyrien Missiles",
+  "item.valkyrienmissiles.item_group_icon": "Valkyrien Missiles Icon",
+  "item.valkyrienmissiles.rocket_body": "Rocket Body",
+  "item.valkyrienmissiles.rocket_body_tip": "Rocket Tip",
+  "item.valkyrienmissiles.rocket_body_fins": "Rocket Fins",
+  "item.valkyrienmissiles.ship_assembler": "Assembler"
 }
