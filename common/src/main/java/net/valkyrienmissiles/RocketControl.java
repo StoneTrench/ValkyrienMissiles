@@ -11,6 +11,7 @@ import org.valkyrienskies.core.api.ships.PhysShip;
 import org.valkyrienskies.core.api.ships.ServerShip;
 import org.valkyrienskies.core.impl.api.ServerShipUser;
 import org.valkyrienskies.core.impl.api.ShipForcesInducer;
+import org.valkyrienskies.core.impl.game.ships.PhysShipImpl;
 
 import java.util.ArrayList;
 
@@ -30,13 +31,25 @@ public class RocketControl implements ShipForcesInducer, ServerShipUser {
 
     @Override
     public void applyForces(@NotNull PhysShip physShip) {
-        System.out.println("ApplyForces");
+        Main.Log("applyForce");
 
         if (ship == null) return;
 
-        Thrusters.forEach(e -> {
-            physShip.applyInvariantForceToPos(e.component1().add(0.5, 0.5, 0.5, new Vector3d()), e.component2());
-        });
+        try {
+            Thrusters.forEach(e -> {
+                Vector3dc pos = e.component1()
+                        .add(0.5, 0.5, 0.5, new Vector3d())
+                        .sub(physShip.getTransform().getPositionInShip());
+                Vector3dc force = physShip.getTransform().getShipToWorld().transformDirection(e.component2().get(new Vector3d()));
+
+                if (force.isFinite() && ((PhysShipImpl)physShip).getPoseVel().getVel().lengthSquared() < 2500) {
+                    physShip.applyInvariantForceToPos(force, pos);
+                }
+            });
+        }
+        catch (Exception e){
+            System.out.println(e.toString());
+        }
     }
 
     public void addThruster(Vector3d position, Vector3d force){

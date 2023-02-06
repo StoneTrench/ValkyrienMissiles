@@ -19,4 +19,9 @@ public class Main {
     public static void init() {
         VMItems.RegisterAll();
     }
+
+    public static void Log(String text){
+        if (true) return;
+        System.out.println(text);
+    }
 }

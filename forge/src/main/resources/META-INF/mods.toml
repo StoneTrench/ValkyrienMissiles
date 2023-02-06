@@ -1,17 +1,17 @@
 modLoader = "javafml"
 loaderVersion = "[40,)"
-#issueTrackerURL = ""
+issueTrackerURL = "https://github.com/StoneTrench/ValkyrienMissiles/issues"
 license = "MIT"
 
 [[mods]]
 modId = "valkyrienmissiles"
 version = "${version}"
 displayName = "Valkyrien Missiles"
-authors = "StoneTrench, FixIsDaddy"
+authors = ["StoneTrench", "FixIsDaddy"]
 description = '''
 Add missiles to Valkyrien Skies.
 '''
-#logoFile = ""
+logoFile = "icon.png"
 
 [[dependencies.valkyrienmissiles]]
 modId = "forge"
@@ -31,5 +31,12 @@ side = "BOTH"
 modId = "architectury"
 mandatory = true
 versionRange = "[4.9.83,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.valkyrienmissiles]]
+modId = "valkyrienskies"
+mandatory = true
+versionRange = "[${vs2_version},)"
 ordering = "AFTER"
 side = "BOTH"
