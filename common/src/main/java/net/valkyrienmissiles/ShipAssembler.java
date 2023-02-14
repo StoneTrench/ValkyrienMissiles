@@ -87,5 +87,4 @@ public class ShipAssembler {
     public static Vec3i ToVec3i(BlockPos pos) {
         return new Vec3i(pos.getX(), pos.getY(), pos.getZ());
     }
-
 }

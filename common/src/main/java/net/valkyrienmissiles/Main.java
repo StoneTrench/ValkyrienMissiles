@@ -1,27 +1,24 @@
 package net.valkyrienmissiles;
 
-import com.google.common.base.Suppliers;
-import dev.architectury.registry.CreativeTabRegistry;
-import dev.architectury.registry.registries.DeferredRegister;
-import dev.architectury.registry.registries.Registries;
-import dev.architectury.registry.registries.RegistrySupplier;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-
-import java.util.function.Supplier;
-
 public class Main {
     public static final String MOD_ID = "valkyrienmissiles";
+    private static final boolean loggingEnabled = true;
 
     public static void init() {
-        VMItems.RegisterAll();
+        VMBlocks.Register();
+        VMItems.Register();
+
+        Info("Initialized!");
     }
 
-    public static void Log(String text){
-        if (true) return;
-        System.out.println(text);
+    public static void Info(String message) {
+        if (!loggingEnabled) return;
+
+        System.out.println("[INFO] (" + MOD_ID +  ")" + message);
+    }
+    public static void Error(String message) {
+        if (!loggingEnabled) return;
+
+        System.out.println("[ERROR] (" + MOD_ID +  ")" + message);
     }
 }

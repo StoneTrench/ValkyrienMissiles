@@ -3,20 +3,17 @@ package net.valkyrienmissiles.block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.valkyrienmissiles.Main;
 import net.valkyrienmissiles.RocketControl;
 import net.valkyrienmissiles.ShipAssembler;
 
-public class RocketThrusterBlock extends RocketBlock {
-    public static final double THRUST = 2500.0;
-    public static final BooleanProperty POWERED;
+public class RocketFinBlock extends RocketBlock {
+    public static final double SCALAR = 100.0;
 
-    public RocketThrusterBlock(Properties properties) {
+    public RocketFinBlock(Properties properties) {
         super(properties);
     }
 
@@ -27,9 +24,9 @@ public class RocketThrusterBlock extends RocketBlock {
         RocketControl rocketControl = GetControl(blockPos, level, true);
         if (rocketControl == null) return;
 
-        rocketControl.addThruster(
+        rocketControl.addFin(
                 ShipAssembler.ToDouble(blockPos),
-                ShipAssembler.ToDouble(blockState.getValue(FACING).getNormal()).mul(THRUST)
+                ShipAssembler.ToDouble(blockState.getValue(FACING).getNormal()).mul(SCALAR)
         );
     }
 
@@ -40,9 +37,9 @@ public class RocketThrusterBlock extends RocketBlock {
         RocketControl rocketControl = GetControl(blockPos, level, true);
         if (rocketControl == null) return;
 
-        rocketControl.addThruster(
+        rocketControl.addFin(
                 ShipAssembler.ToDouble(blockPos),
-                ShipAssembler.ToDouble(blockState.getValue(FACING).getNormal()).mul(THRUST)
+                ShipAssembler.ToDouble(blockState.getValue(FACING).getNormal()).mul(SCALAR)
         );
     }
 
@@ -53,24 +50,19 @@ public class RocketThrusterBlock extends RocketBlock {
         RocketControl rocketControl = GetControl(blockPos, level, false);
         if (rocketControl == null) return;
 
-        rocketControl.removeThruster(
+        rocketControl.removeFin(
                 ShipAssembler.ToDouble(blockPos),
-                ShipAssembler.ToDouble(blockState.getValue(FACING).getNormal()).mul(THRUST)
+                ShipAssembler.ToDouble(blockState.getValue(FACING).getNormal()).mul(SCALAR)
         );
     }
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext blockPlaceContext) {
-        return this.defaultBlockState().setValue(FACING, blockPlaceContext.getNearestLookingDirection()).setValue(POWERED, false);
+        return this.defaultBlockState().setValue(FACING, blockPlaceContext.getNearestLookingDirection());
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
-        builder.add(POWERED);
-    }
-
-    static {
-        POWERED = BlockStateProperties.POWERED;
     }
 }
